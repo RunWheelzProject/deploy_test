@@ -24,7 +24,7 @@ pipeline{
         stage("connect to AWS EC2 via SSH"){
             steps {
 			    sshagent(credentials: ['0d4ecb5a-9121-417e-b954-af6bac017549']) {
-			      sh '''
+			      bat '''
 			          [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
 			          ssh-keyscan -t rsa,dsa ec2-43-205-239-149.ap-south-1.compute.amazonaws.com >> ~/.ssh/known_hosts
 			          ssh ec2-user@ec2-43-205-239-149.ap-south-1.compute.amazonaws.com ...

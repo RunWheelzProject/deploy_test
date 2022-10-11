@@ -1,8 +1,8 @@
 # Docker Build Stage
-FROM adoptopenjdk/openjdk11 as build
+FROM adoptopenjdk/openjdk11:alpine-jre
 
 ARG JAR_FILE=target/*.jar
 
-COPY --from=build ${JAR_FILE} app.jar
+COPY ${JAR_FILE} app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]

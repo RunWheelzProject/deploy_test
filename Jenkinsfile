@@ -6,6 +6,7 @@ pipeline{
                 bat 'mvn clean package'
             }
         }
+<<<<<<< HEAD
         
         stage("Build docker"){
             steps{
@@ -21,5 +22,12 @@ pipeline{
             }
         }
         
+=======
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t mdits/jenkins_test:1 .'
+            }
+        }
+>>>>>>> 12d674c077ad47d7418faa56f21ac2f46042f540
     }
 }

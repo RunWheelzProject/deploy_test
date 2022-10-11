@@ -6,20 +6,10 @@ pipeline{
                 bat 'mvn clean package'
             }
         }
-        
-        stage("Build docker"){
-            steps{
-                dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t mdits/jenkins_test:1 .'
             }
         }
-        
-        
-        stage("Deploy docker"){
-            steps{
-                bat "docker stop docker_demo || true && docker rm docker_demo || true"
-                bat "docker run --name docker_demo -d -p 8081:8081 docker_demo:${env.BUILD_NUMBER}"
-            }
-        }
-        
     }
 }

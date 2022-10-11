@@ -21,5 +21,12 @@ pipeline{
             }
         }
         
+        stage("connect to AWS EC2 via SSH"){
+            steps{
+               bat "ssh -i 'G:/docker_demo_ec2_deploy/runwheelz-keypair.pem' ec2-user@ec2-43-205-239-149.ap-south-1.compute.amazonaws.com"
+               sh "sudo -i"
+            }
+        }
+        
     }
 }

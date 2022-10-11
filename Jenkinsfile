@@ -9,7 +9,7 @@ pipeline{
         
         stage("Build docker"){
             steps{
-                dockerImage = dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
+                dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
             }
         }
         

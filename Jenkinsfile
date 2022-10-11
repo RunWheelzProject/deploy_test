@@ -1,18 +1,18 @@
-pipeline {
+pipeline{
     agent any
-
-    environment {
-        DOCKER_REPO = "taskagile/vuejs.spring-boot.mysql"
-        DOCKER_CREDENTIAL = "dockerhub"
-        JENKINS_AT_STAGING = "jenkins@staging.taskagile.com"
+    tools{
+        maven 'Maven'
     }
-
-    stages {
-        stage("Build package") {
-            steps {
-                echo "Git commit: ${env.GIT_COMMIT}"
-                sh "mvn clean package"
+    stages{
+        stage("SCM Checkout"){
+            steps{
+            git 'https://github.com/RunWheelzProject/deploy_test.git'
             }
         }
-	}
+        stage("Maven Build"){
+            steps{
+                bat 'mvn clean package'
+            }
+        }
+    }
 }

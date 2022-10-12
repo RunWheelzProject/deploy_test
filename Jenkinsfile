@@ -15,7 +15,8 @@ pipeline {
         stage('Build') { 
             steps { 
                 script{
-                 app = docker.build("underwater")
+                 app = docker.build("mdits/jenkins_test:0.0.1")
+                 app.push()
                 }
             }
         }

@@ -1,4 +1,4 @@
-FROM maven:3.8.6-jdk-11-alpine
+FROM maven:eclipse-temurin:11-jdk
 WORKDIR /target
 RUN mvn install
 

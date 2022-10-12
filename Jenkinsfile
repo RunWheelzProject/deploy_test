@@ -11,18 +11,17 @@ pipeline {
                 }
             }
         }
-
-        stage('Build') { 
-            steps { 
-                script{
-                 app = docker.build("mdits/jenkins_test:0.0.3")
-                 app.push()
-                }
+        stage("Build docker"){
+            steps{
+                //dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
+                bat "docker build -t mdits/jenkins_test:latest . "
             }
         }
-        stage('Test'){
-            steps {
-                 echo 'Empty'
+        
+         stage("Deploy image to docker to hub"){
+            steps{
+               bat "docker login -u mdits -p mdits@2022"
+               bat "docker push mdits/jenkins_test:latest"
             }
         }
         stage('Run Docker container on remote hosts') {

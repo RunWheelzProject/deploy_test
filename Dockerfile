@@ -6,14 +6,12 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN mvn clean package
-RUN ls /usr/app/target/
+RUN mvn package
+RUN ls /usr/
+RUN ls /usr/
 
-#COPY ./target/demo-0.0.1-SNAPSHOT.jar /app.jar
+COPY ./target/demo-0.0.1-SNAPSHOT.jar /usr/demo_app.jar
 
-#ENTRYPOINT ["java","-jar","/app.jar"]
+RUN ls /usr/
 
-
-# docker run -p 8015:8081 mdits/jenkins:0.0.3
-
-# docker build -t mdits/jenkins:0.0.3 .
+ENTRYPOINT ["java","-jar","/usr/demo_app.jar"]

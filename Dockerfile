@@ -8,4 +8,6 @@ COPY src src
 
 RUN mvn clean package
 
-CMD ["java -jar /app.jar"]
+COPY target/*.jar /app.jar
+
+ENTRYPOINT ["java","-jar","/app.jar"]

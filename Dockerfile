@@ -8,4 +8,4 @@ COPY src src
 
 RUN mvn clean package
 
-CMD ["java -jar /usr/app/app.jar"]
+CMD ["java -jar ./app.jar"]

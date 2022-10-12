@@ -1,25 +1,29 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Maven Build"){
-            steps{
-                bat 'mvn clean package'
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+         stage('Clone repository') { 
+            steps { 
+                script{
+                checkout scm
+                }
             }
         }
-        
-        stage("Build docker"){
-            steps{
-                //dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
-                bat "docker build -t mdits/jenkins_test:latest . "
+
+        stage('Build') { 
+            steps { 
+                script{
+                 app = docker.build("underwater")
+                }
             }
         }
-        
-         stage("Deploy depoloy to hub"){
-            steps{
-               bat "docker login -u mdits -p mdits@2022"
-               bat "docker push mdits/jenkins_test:latest"
+        stage('Test'){
+            steps {
+                 echo 'Empty'
             }
         }
-        
+       
     }
 }

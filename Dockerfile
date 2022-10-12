@@ -1,5 +1,10 @@
 FROM maven:3.5-jdk-8-alpine
 WORKDIR /usr/app
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+
 RUN ./mvnw clean install
 
 FROM adoptopenjdk/openjdk11:alpine-jre

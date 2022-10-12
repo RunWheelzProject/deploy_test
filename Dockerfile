@@ -1,8 +1,8 @@
 FROM maven:3.5-jdk-8-alpine
-WORKDIR /demo
+WORKDIR /
 RUN mvn clean install
 
 FROM adoptopenjdk/openjdk11:alpine-jre
-WORKDIR /demo
+WORKDIR /
 COPY --from=build /target/*.jar app.jar
 CMD ["java -jar app.jar"]

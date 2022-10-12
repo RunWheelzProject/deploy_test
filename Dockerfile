@@ -6,7 +6,7 @@ COPY .mvn .mvn
 COPY pom.xml .
 COPY src src
 
-RUN ./mvnw package
+RUN mvn clean package
 
 FROM adoptopenjdk/openjdk11:alpine-jre
 WORKDIR /usr/app

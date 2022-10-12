@@ -8,9 +8,8 @@ COPY src src
 
 RUN mvn clean package
 RUN ls /usr/app/target/
-RUN ls /usr/app/target/
 
-#COPY /usr/app/target/demo-0.0.1-SNAPSHOT.jar /app.jar
+COPY ./target/demo-0.0.1-SNAPSHOT.jar /app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]
 

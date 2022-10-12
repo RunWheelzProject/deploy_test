@@ -1,4 +1,4 @@
-FROM adoptopenjdk/maven-openjdk11
+FROM adoptopenjdk/maven-openjdk11 as build
 WORKDIR /usr/app
 
 COPY mvnw .
@@ -8,7 +8,5 @@ COPY src src
 
 RUN mvn clean package
 
-FROM adoptopenjdk/openjdk11:alpine-jre
-WORKDIR /usr/app
 COPY --from=build /target/*.jar app.jar
 CMD ["java -jar app.jar"]

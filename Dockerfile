@@ -1,13 +1,7 @@
-FROM adoptopenjdk/maven-openjdk11
-WORKDIR /usr/app
+FROM adoptopenjdk/openjdk11:alpine-jre
 
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
-COPY src src
+ARG JAR_FILE=target/*.jar
 
-RUN mvn clean package
-
-COPY target/*.jar /app.jar
+COPY ${JAR_FILE} app.jar
 
 ENTRYPOINT ["java","-jar","/app.jar"]

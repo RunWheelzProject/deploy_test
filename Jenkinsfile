@@ -14,7 +14,7 @@ pipeline {
         stage('build image') { 
             steps { 
                 script{
-                bat 'mvn package'
+                bat 'mvn clean package'
                 }
             }
         }

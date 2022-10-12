@@ -1,9 +1,9 @@
 FROM maven:3.5-jdk-8-alpine
 WORKDIR /usr/app
 
-COPY mvnw .
+COPY .mvnw .mvnw
 COPY .mvn .mvn
-COPY pom.xml .
+COPY pom.xml pom.xml
 COPY src src
 
 RUN ./mvnw install -DskipTests

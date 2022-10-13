@@ -36,7 +36,7 @@ pipeline {
             	// bat "docker run -p 8018:8081 --name run8 mdits/jenkins_test:0.0.6"
                 // bat "docker -H ssh:\\ec2-user@43.205.239.149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
                 // bat "docker -i ssh://ec2-user@43.205.239.149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
-                bat "ssh -i ssh_server@ec2-43-205-239-149.ap-south-1.compute.amazonaws.com "docker run -p 8019:8081 --name run9 mdits/jenkins_test:0.0.6"
+                bat 'ssh -i ssh_server@ec2-43-205-239-149.ap-south-1.compute.amazonaws.com "docker run -p 8019:8081 --name run9 mdits/jenkins_test:0.0.6"'
             }
         }
        

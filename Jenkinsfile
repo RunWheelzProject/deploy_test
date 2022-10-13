@@ -37,10 +37,12 @@ pipeline {
                 // bat "docker -H ssh:\\ec2-user@43.205.239.149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
                 // bat "docker -i ssh://ec2-user@43.205.239.149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
                 // bat 'ssh -i ssh_server "docker run -p 8019:8081 --name run9 mdits/jenkins_test:0.0.6"'
-                sshagent(credentials : ['ssh_server']) {
-                  bat "echo pwd"
-                  //sh 'ssh -t -t ubuntu@xx.xxx.xx.xx -o StrictHostKeyChecking=no "echo pwd && sudo -i -u root && cd /opt/docker/web && echo pwd"'
-                }
+                script {
+                     sshagent(credentials : ['ssh_server']) {
+                        sh "echo pwd"
+                        sh 'sudo -i -u root'
+                    }
+                 }
             }
         }
        

@@ -41,7 +41,7 @@ pipeline {
                      sshagent(credentials : ['ssh_server']) {
                         sh "echo pwd"
                         //sh 'sudo -i'
-                        sh "docker run -p 80:8081 --name run10 mdits/jenkins_test:0.0.6"
+                        sh "docker run -p 80:8081 --name run11 mdits/jenkins_test:0.0.6"
                     }
                  }
             }

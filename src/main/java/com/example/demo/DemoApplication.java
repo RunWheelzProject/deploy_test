@@ -25,14 +25,9 @@ public class DemoApplication {
 		return "HI!!!!";
 	}
 	
-	@GetMapping("/venkat")
-	public String venkat() {
-		return "HI!!!!";
-	}
-	
-	@GetMapping("/vasantha")
+	@GetMapping("/mdits")
 	public String vasantha() {
-		return "HI!!!!";
+		return "mdits";
 	}
 	
 	public static void main(String[] args) {

@@ -25,11 +25,6 @@ public class DemoApplication {
 		return "HI!!!!";
 	}
 	
-	@GetMapping("/mdits")
-	public String vasantha() {
-		return "mdits";
-	}
-	
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}

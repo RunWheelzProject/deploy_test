@@ -40,7 +40,7 @@ pipeline {
                 script {
                      sshagent(credentials : ['ssh_server']) {
                         sh "echo pwd"
-                        //sh 'sudo -i'
+                        sh 'ps -ef'
                         sh "docker run -p 8003:8081 --name run12 mdits/jenkins_test:0.0.6"
                     }
                  }

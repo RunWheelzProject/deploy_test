@@ -34,7 +34,7 @@ pipeline {
             steps {
                 // bat 'docker rm run1'
             	// bat "docker run -p 8018:8081 --name run8 mdits/jenkins_test:0.0.6"
-                bat "docker -H ssh://ec2-user@ec2-43-205-239-149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
+                bat "docker -H ssh:\\ec2-user@43.205.239.149 run -d -p 80:8081 mdits/jenkins_test:0.0.6"
             }
         }
        

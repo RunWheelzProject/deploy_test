@@ -14,20 +14,20 @@ pipeline {
         stage('build image') { 
             steps { 
                 script{
-                bat 'mvn clean package'
+                sh 'mvn clean package'
                 }
             }
         }
         stage("Build docker"){
             steps{
                 //dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
-                bat "docker build -t mdits/jenkins_test:0.0.6 . "
+                sh "docker build -t mdits/jenkins_test:0.0.6 . "
             }
         }
          stage("Deploy image to docker to hub"){
             steps{
-               bat "docker login -u mdits -p officework"
-               bat "docker push mdits/jenkins_test:0.0.6"
+               sh "docker login -u mdits -p officework"
+               sh "docker push mdits/jenkins_test:0.0.6"
             }
         }
         stage('Run Docker container on remote hosts') {

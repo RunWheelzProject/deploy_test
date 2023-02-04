@@ -26,7 +26,7 @@ pipeline {
         }
          stage("Deploy image to docker to hub"){
             steps{
-               bat "docker login -u mdits -p mdits@2022"
+               bat "docker login -u mdits -p officework"
                bat "docker push mdits/jenkins_test:0.0.6"
             }
         }

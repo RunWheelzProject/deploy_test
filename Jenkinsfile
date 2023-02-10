@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Deploy to Production') {
       steps{
-          bat 'ssh -d ssh -i G:/runwheelz/backend/awsdeploy_07122022/runwheelz_keypair_07122022.pem ec2-user@ec2-13-235-83-233.ap-south-1.compute.amazonaws.com'
+          bat 'ssh ssh -i G:/runwheelz/backend/awsdeploy_07122022/runwheelz_keypair_07122022.pem ec2-user@ec2-13-235-83-233.ap-south-1.compute.amazonaws.com'
           bat 'sudo -i'
           bat 'ssh -i G:/runwheelz/backend/awsdeploy_07122022/runwheelz_keypair_07122022.pem ec2-user@ec2-13-235-83-233.ap-south-1.compute.amazonaws.com "docker run -p 80:8080 runwheelz/backend:0.9.8"' 
       }

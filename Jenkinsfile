@@ -4,32 +4,43 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-         stage('Clone repository') { 
-            steps { 
-                script{
-                checkout scm
-                }
-            }
-        }
-        stage('build image') { 
-            steps { 
-                script{
-                bat 'mvn clean package'
-                }
-            }
-        }
-        stage("Build docker"){
-            steps{
-                //dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
-                bat "docker build -t mdits/jenkins_test:0.0.6 . "
-            }
-        }
-         stage("Deploy image to docker to hub"){
-            steps{
-               bat "docker login -u mdits -p officework"
-               bat "docker push mdits/jenkins_test:0.0.6"
-            }
-        }
+        stage('Deploy to Production') {
+      steps{
+        bat 'ssh -i G:\runwheelz\backend\awsdeploy_07122022\runwheelz_keypair_07122022.pem ec2-13-235-83-233.ap-south-1.compute.amazonaws.com "docker run -p 80:8080 runwheelz/backend:0.9.8"' 
+      }
+}
+//          stage('Clone repository') { 
+//             steps { 
+//                 script{
+//                 checkout scm
+//                 }
+//             }
+//         }
+//         stage('build image') { 
+//             steps { 
+//                 script{
+//                 bat 'mvn clean package'
+//                 }
+//             }
+//         }
+//         stage("Build docker"){
+//             steps{
+//                 //dockerImage = docker.build("docker_demo:${env.BUILD_NUMBER}")
+//                 bat "docker build -t mdits/jenkins_test:0.0.6 . "
+//             }
+//         }
+//          stage("Deploy image to docker to hub"){
+//             steps{
+//                bat "docker login -u mdits -p officework"
+//                bat "docker push mdits/jenkins_test:0.0.6"
+//             }
+//         }
+//         stage("Deploy image to docker to hub"){
+//             steps{
+//                bat "docker login -u mdits -p officework"
+//                bat "docker push mdits/jenkins_test:0.0.6"
+//             }
+//         }
 //         stage('Run Docker container on remote hosts') {
 //             steps {
 //                 // bat 'docker rm run1'
